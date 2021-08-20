@@ -5,7 +5,7 @@ import time
 
 
 USER_COUNT = 4
-AVG_POSTS_PER_USER = 25
+AVG_POSTS_PER_USER = 5
 AVG_COMMENTS_PER_POST = 5
 ALBUMS_PER_USER = 4
 IMAGES_PER_ALBUM = 6
@@ -58,8 +58,8 @@ if __name__ == '__main__':
     for postid in range(1, USER_COUNT * AVG_POSTS_PER_USER + 1):
         posts.append({
             "id": postid,
-            "content": get_text(paras=5),
-            "userid": random.randint(1, 4)
+            "content": get_text(paras=2),
+            "userid": random.randint(1, USER_COUNT)
         })
     print("done posts")
 
@@ -68,8 +68,8 @@ if __name__ == '__main__':
     for commentid in range(1, USER_COUNT * AVG_POSTS_PER_USER * AVG_COMMENTS_PER_POST + 1):
         comments.append({
             "id": commentid,
-            "postid": random.randint(1, 100),
-            "userid": random.randint(1, 4),
+            "postid": random.randint(1, USER_COUNT * AVG_POSTS_PER_USER),
+            "userid": random.randint(1, USER_COUNT),
             "content": get_text(is_paragraph=False, sentences=1)
         })
     print("done comments")
@@ -79,21 +79,19 @@ if __name__ == '__main__':
     for albumid in range(1, USER_COUNT * ALBUMS_PER_USER + 1):
         albums.append({
             "id": albumid,
-            "userid": (albumid - 1) // 4 + 1,
+            "userid": (albumid - 1) // USER_COUNT + 1,
             "title": get_text(is_paragraph=False, sentences=1),
-            "description": get_text(paras=3)
+            "description": get_text(is_paragraph=False, sentences=1)
         })
     print("done albums")
 
     # generate images
     images = []
-    cat_urls = get_cat_images(96)
+    cat_urls = get_cat_images(USER_COUNT * ALBUMS_PER_USER * IMAGES_PER_ALBUM)
     for imageid in range(1, USER_COUNT * ALBUMS_PER_USER * IMAGES_PER_ALBUM + 1):
         images.append({
             "id": imageid,
             "albumid": random.randint(1, USER_COUNT * ALBUMS_PER_USER),
-            "title": get_text(is_paragraph=False, sentences=1),
-            "description": get_text(paras=3),
             "url": cat_urls[imageid - 1]
         })
     print("done images")
