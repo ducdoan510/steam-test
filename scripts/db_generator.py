@@ -102,6 +102,7 @@ if __name__ == '__main__':
         "posts": posts,
         "comments": comments,
         "images": images,
+        "albums": albums,
     }
     with open("db.json", "w") as outfile:
         json.dump(data, outfile)
