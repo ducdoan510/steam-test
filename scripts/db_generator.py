@@ -5,10 +5,10 @@ import time
 
 
 USER_COUNT = 4
-AVG_POSTS_PER_USER = 5
-AVG_COMMENTS_PER_POST = 5
-ALBUMS_PER_USER = 4
-IMAGES_PER_ALBUM = 6
+AVG_POSTS_PER_USER = 2
+AVG_COMMENTS_PER_POST = 2
+ALBUMS_PER_USER = 3
+IMAGES_PER_ALBUM = 2
 
 
 def get_text(is_paragraph=True, paras=None, sentences=None):
