@@ -1,7 +1,9 @@
 import React from "react";
+import {Posts} from "./Posts";
+import {getCurrentUser} from "../util/userHelper";
 
 export const MyPosts = () => {
   return (
-    <div>My Posts</div>
+    <Posts showAddNewPost={true} username={getCurrentUser().name}/>
   )
 }

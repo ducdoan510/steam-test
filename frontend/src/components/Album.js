@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import {fetchAlbum} from "../api/apiCall";
 import {Breadcrumb, Button, Carousel, Empty, Image, Input, Modal, Typography, message} from "antd";
+import {getCurrentUser} from "../util/userHelper";
 
 export const Album = () => {
   const { albumid } = useParams()
@@ -31,7 +32,7 @@ export const Album = () => {
   return (
     <>
       <Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item><Link to={`/albums/${JSON.parse(localStorage.getItem("currUser")).name}`}>My Albums</Link></Breadcrumb.Item>
+        <Breadcrumb.Item><Link to={`/albums/${getCurrentUser().name}`}>My Albums</Link></Breadcrumb.Item>
         <Breadcrumb.Item>Album Detail</Breadcrumb.Item>
       </Breadcrumb>
       <Typography.Title>Album Detail</Typography.Title>

@@ -6,7 +6,7 @@ export interface User {
 export interface Post {
   id: number 
   content: string 
-  userId: number 
+  userid: number
 }
 
 export interface Comment {

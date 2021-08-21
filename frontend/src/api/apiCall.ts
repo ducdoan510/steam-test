@@ -1,4 +1,4 @@
-import {Album, Image, User} from "./datatype";
+import {Album, Comment, Image, Post, User} from "./datatype";
 
 const DOMAIN_URL = "https://my-json-server.typicode.com/ducdoan510/steam-test"
 
@@ -12,8 +12,13 @@ const fetchData = async (postfix: string) => {
   }
 }
 
+export const fetchUsers = async () => {
+  const users: User[] = await fetchData("users")
+  return users || []
+}
+
 export const fetchUser = async (username: string) => {
-  const users: User[] = await fetchData("users") || []
+  const users: User[] = await fetchUsers()
   const user = users.filter(user => user.name === username)
   return user.length > 0 ? user[0] : null
 }
@@ -36,4 +41,21 @@ export const fetchAlbum = async (albumid: number) => {
   const allImages: Image[] = await fetchData("images")
   const images = allImages.filter(image => image.albumid === albumid)
   return [album, images]
+}
+
+export const fetchPosts = async (username: string) => {
+  const users: User[] = await fetchUsers()
+  const filteredUsers = users.filter(user => user.name === username)
+  const user = filteredUsers.length > 0 ? filteredUsers[0] : null
+  const posts = await fetchData("posts")
+  if (user === null) {
+    return [null, posts]
+  }
+  return [user, posts.filter((post: Post) => post.userid === user.id)]
+}
+
+export const fetchComments = async (postid: number) => {
+  const comments: Comment[] = await fetchData("comments")
+  const postComments = comments.filter((comment: Comment) => comment.postid === postid)
+  return postComments
 }

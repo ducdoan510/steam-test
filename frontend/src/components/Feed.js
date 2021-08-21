@@ -1,7 +1,8 @@
 import React from "react";
+import {Posts} from "./Posts";
 
 export const Feed = () => {
   return (
-    <div>Feed</div>
+    <Posts showAddNewPost={true}/>
   )
 }

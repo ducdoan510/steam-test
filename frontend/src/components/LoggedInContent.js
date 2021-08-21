@@ -6,6 +6,7 @@ import {MyPosts} from "./MyPosts";
 import {Feed} from "./Feed";
 import {Albums} from "./Albums";
 import {Album} from "./Album";
+import {getCurrentUser} from "../util/userHelper";
 const { Content, Sider } = Layout;
 
 export const LoggedInContent = () => {
@@ -18,7 +19,7 @@ export const LoggedInContent = () => {
           <Menu.Item key="posts" icon={<UserOutlined/>}><Link to="/home">My Posts</Link></Menu.Item>
           <Menu.Item key="feed" icon={<FundProjectionScreenOutlined />}><Link to="/feed">Feed</Link></Menu.Item>
           <Menu.Item key="album" icon={<FileImageOutlined />}>
-            <Link to={`/albums/${JSON.parse(localStorage.getItem("currUser")).name}`}>My Albums</Link>
+            <Link to={`/albums/${getCurrentUser().name}`}>My Albums</Link>
           </Menu.Item>
         </Menu>
       </Sider>

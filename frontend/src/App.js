@@ -7,11 +7,12 @@ import './App.css';
 import React, {useState} from "react";
 import {LoggedInContent} from "./components/LoggedInContent";
 import {LoggedoutContent} from "./components/LoggedoutContent";
+import {getCurrentUser} from "./util/userHelper";
 
 const { Header, Content } = Layout;
 
 function App() {
-  const [user, setUser] = useState(localStorage.getItem("currUser") ? JSON.parse(localStorage.getItem("currUser")) : {
+  const [user, setUser] = useState(getCurrentUser() || {
     id: 0,
     name: ""
   })
