@@ -44,7 +44,7 @@ function App() {
               ) : (
                 <>
                   <Menu.Item key="welcome"><Link to="/home">Welcome to STEAM, {user.name}</Link></Menu.Item>
-                  <Menu.Item key="logout">Log out</Menu.Item>
+                  <Menu.Item key="logout"><Link to="/home">Log out</Link></Menu.Item>
                 </>
               )
             }

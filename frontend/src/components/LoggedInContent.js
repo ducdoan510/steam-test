@@ -5,6 +5,7 @@ import {Link, Route, Switch} from "react-router-dom";
 import {MyPosts} from "./MyPosts";
 import {Feed} from "./Feed";
 import {Albums} from "./Albums";
+import {Album} from "./Album";
 const { Content, Sider } = Layout;
 
 export const LoggedInContent = () => {
@@ -16,19 +17,24 @@ export const LoggedInContent = () => {
           style={{ height: '100%' }}>
           <Menu.Item key="posts" icon={<UserOutlined/>}><Link to="/home">My Posts</Link></Menu.Item>
           <Menu.Item key="feed" icon={<FundProjectionScreenOutlined />}><Link to="/feed">Feed</Link></Menu.Item>
-          <Menu.Item key="album" icon={<FileImageOutlined />}><Link to="/albums">My Albums</Link></Menu.Item>
+          <Menu.Item key="album" icon={<FileImageOutlined />}>
+            <Link to={`/albums/${JSON.parse(localStorage.getItem("currUser")).name}`}>My Albums</Link>
+          </Menu.Item>
         </Menu>
       </Sider>
       <Content style={{ padding: '0 24px', minHeight: 280 }}>
         <Switch>
-          <Route path="/home">
+          <Route exact path="/home">
             <MyPosts/>
           </Route>
-          <Route path="/feed">
+          <Route exact path="/feed">
             <Feed/>
           </Route>
-          <Route path="/albums">
+          <Route exact path="/albums/:username">
             <Albums/>
+          </Route>
+          <Route exact path="/albums/:username/:albumid">
+            <Album/>
           </Route>
         </Switch>
       </Content>
