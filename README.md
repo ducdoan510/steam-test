@@ -51,7 +51,16 @@ The generation script can be found in ```scripts``` folder. To run the script
 2. python db_generation.py
 
 ## Usage
-TODO
+Once the page starts up, users can take the following actions:
+1. Sign in using a username in the system, e.g. Elizabeth
+2. Once signed in, user can log out if needed, otherwise the username will persist
+3. On <b>My Posts</b> page, users can add, edit, delete posts and add comments also
+4. On <b>Feed</b> page, users can view and comment on other users' posts
+5. On <b>My Albums</b> page, users and view, add, and delete their albums info. User can click on view detail symbols to view the carousel of images in each album
 
 ## Possible Improvement
+1. The ability to search posts by text. Possible approach could be indexing post data with Elasticsearch
+2. Users can add privacy preference for their posts
+3. Manage storage of posts and images if backend is built from scratch
+
 TODO
