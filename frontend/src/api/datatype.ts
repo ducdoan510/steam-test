@@ -26,5 +26,5 @@ export interface Album {
   id: number
   userid: number 
   title: string 
-  description: string 
+  description: string
 }

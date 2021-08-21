@@ -26,7 +26,14 @@ export const fetchAlbums = async (user: User) => {
 export const fetchImages = async (user: User) => {
   const albums: Album[] = await fetchAlbums(user)
   const albumids: number[] = albums.map(album => album.id)
-  console.log(albums, albumids)
   const images: Image[] = (await fetchData("images") || []).filter((image: Image) => albumids.includes(image.albumid))
   return [albums, images]
+}
+
+export const fetchAlbum = async (albumid: number) => {
+  const albums: Album[] = (await fetchData("albums")).filter((album: Album) => album.id === albumid)
+  const album = albums[0]
+  const allImages: Image[] = await fetchData("images")
+  const images = allImages.filter(image => image.albumid === albumid)
+  return [album, images]
 }
