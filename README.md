@@ -62,5 +62,3 @@ Once the page starts up, users can take the following actions:
 1. The ability to search posts by text. Possible approach could be indexing post data with Elasticsearch
 2. Users can add privacy preference for their posts
 3. Manage storage of posts and images if backend is built from scratch
-
-TODO
